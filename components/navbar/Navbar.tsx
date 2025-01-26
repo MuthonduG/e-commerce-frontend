@@ -49,7 +49,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex justify-center items-center overflow-hidden">
             <Link href={'/landing'}>
-              <Image src={App_Logo} alt='' className='w-[10rem]' />
+              <Image src={App_Logo} alt="App Logo" className="w-[10rem]" />
             </Link>
           </div>
 
@@ -59,7 +59,7 @@ const Navbar = () => {
               <Link
                 href={link_item.href}
                 key={index}
-                className='flex justify-center items-center transition-transform delay-150 ease-in-out hover:animate-bounce font-semibold hover:text-zinc-500'
+                className="flex justify-center items-center transition-transform delay-150 ease-in-out hover:animate-bounce font-semibold hover:text-zinc-500"
               >
                 <span>{link_item.label}</span>
               </Link>
@@ -68,15 +68,20 @@ const Navbar = () => {
 
           {/* Enquiry button */}
           <div className="flex justify-center items-center p-2">
-            <Link href={''} className='bg-zinc-700 p-2 px-4 text-slate-200 rounded-xl hover:bg-zinc-900 hover:text-zinc-200 transition delay-75 xl:block md:hidden sm:hidden'>
-              Today's Offer
+            <Link
+              href=""
+              className="bg-zinc-700 p-2 px-4 text-slate-200 rounded-xl hover:bg-zinc-900 hover:text-zinc-200 transition delay-75 xl:block md:hidden sm:hidden"
+            >
+              Today&apos;s Offer
             </Link>
             <button
               onClick={handleSidenavPopup}
               type="button"
-              className='xl:hidden md:block sm:block flex justify-center items-center text-3xl p-2'
+              className="xl:hidden md:block sm:block flex justify-center items-center text-3xl p-2"
             >
-              <span><TiThMenuOutline /></span>
+              <span>
+                <TiThMenuOutline />
+              </span>
             </button>
           </div>
         </div>
@@ -90,34 +95,38 @@ const Navbar = () => {
             transition-transform duration-[600ms] ease-in-out p-2`}
         >
           <div className="w-full">
-
             <div className="flex justify-between p-6 text-xl font-medium">
               <span className="uppercase s">Car Fits</span>
-              <button type="button" onClick={handleSidenavPopup} className=''>
-                <GiCancel/>
+              <button
+                type="button"
+                onClick={handleSidenavPopup}
+                className=""
+              >
+                <GiCancel />
               </button>
             </div>
 
             <div className="flex flex-col justify-center items-center w-full gap-4">
-                {NavHyperlinks.map((link_item, index) => (
-                  <Link
-                    href={link_item.href}
-                    key={index}
-                    className='flex justify-center items-center p-4 hover:bg-gray-100 hover:text-slate-700 hover:shadow-xl w-full rounded-xl transition-transform duration-[600ms] ease-in-out hover:animate-bounce hover:font-semibold'
-                  >
-                    <span>{link_item.label}</span>
-                  </Link>
-                ))}
+              {NavHyperlinks.map((link_item, index) => (
+                <Link
+                  href={link_item.href}
+                  key={index}
+                  className="flex justify-center items-center p-4 hover:bg-gray-100 hover:text-slate-700 hover:shadow-xl w-full rounded-xl transition-transform duration-[600ms] ease-in-out hover:animate-bounce hover:font-semibold"
+                >
+                  <span>{link_item.label}</span>
+                </Link>
+              ))}
             </div>
 
             <div className="flex justify-center items-center w-full p-4">
-              <Link href={''} className='bg-zinc-700 w-full p-2 px-4 text-slate-200 rounded-full hover:bg-zinc-900 hover:text-zinc-200 transition delay-75 flex justify-center items-center shadow-xl mt-24'>
-                <span>Today's Offer</span>
+              <Link
+                href=""
+                className="bg-zinc-700 w-full p-2 px-4 text-slate-200 rounded-full hover:bg-zinc-900 hover:text-zinc-200 transition delay-75 flex justify-center items-center shadow-xl mt-24"
+              >
+                <span>Today&apos;s Offer</span>
               </Link>
             </div>
-            
           </div>
-
         </section>
       )}
     </>
