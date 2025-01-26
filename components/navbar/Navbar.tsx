@@ -21,9 +21,17 @@ const NavHyperlinks: Hyperlinks[] = [
 const Navbar = () => {
   const [isSideNav, setIsSideNav] = useState<boolean>(false)
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false)
+  const [isClient, setIsClient] = useState<boolean>(false)
+
+  // Check if we're on the client
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Detect screen size changes
   useEffect(() => {
+    if (!isClient) return; // Avoid running code until after the initial render
+
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth >= 1024) // Large screens start at 1024px (xl)
     }
@@ -32,7 +40,7 @@ const Navbar = () => {
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [isClient])
 
   // Handle sidenav toggle
   const handleSidenavPopup = () => {
@@ -41,20 +49,24 @@ const Navbar = () => {
     }
   }
 
+  if (!isClient) {
+    return null; // Return null to avoid hydration issues during SSR
+  }
+
   return (
     <>
       {/* Navbar */}
-      <nav className="fixed xl:w-[80%] md:w-[95%] rounded-full h-[5rem] shadow-xl bg-white mt-16 flex justify-center items-center p-2 gap-4">
-        <div className="flex xl:justify-around md:justify-between items-center xl:w-[80%] md:w-full sm:w-full sm:justify-between gap-4">
+      <nav className="fixed xl:w-[80%] w-[95%] rounded-full h-[5rem] shadow-xl bg-white mt-16 flex justify-center items-center p-2 gap-4">
+        <div className="flex xl:justify-around justify-between items-center xl:w-[80%] w-full gap-4">
           {/* Logo */}
           <div className="flex justify-center items-center overflow-hidden">
             <Link href={'/landing'}>
-              <Image src={App_Logo} alt="App Logo" className="w-[10rem]" />
+              <Image src={App_Logo} alt="App Logo" className="xl:w-[10rem] md:w-[10rem] w-[5rem]" />
             </Link>
           </div>
 
           {/* Hyperlinks */}
-          <div className="grid-cols-4 gap-12 xl:grid md:hidden sm:hidden">
+          <div className="grid-cols-4 gap-12 hidden xl:grid">
             {NavHyperlinks.map((link_item, index) => (
               <Link
                 href={link_item.href}
@@ -70,14 +82,14 @@ const Navbar = () => {
           <div className="flex justify-center items-center p-2">
             <Link
               href=""
-              className="bg-zinc-700 p-2 px-4 text-slate-200 rounded-xl hover:bg-zinc-900 hover:text-zinc-200 transition delay-75 xl:block md:hidden sm:hidden"
+              className="xl:inline-block hidden bg-zinc-700 p-2 px-4 text-slate-200 rounded-xl hover:bg-zinc-900 hover:text-zinc-200 transition delay-75"
             >
               Today&apos;s Offer
             </Link>
             <button
               onClick={handleSidenavPopup}
               type="button"
-              className="xl:hidden md:block sm:block flex justify-center items-center text-3xl p-2"
+              className="xl:hidden flex justify-center items-center xl:text-3xl md:text-3xl text-2xl p-2"
             >
               <span>
                 <TiThMenuOutline />
@@ -90,13 +102,13 @@ const Navbar = () => {
       {/* Sidenav */}
       {!isLargeScreen && (
         <section
-          className={`mt-28 fixed top-0 left-0 h-screen w-[30%] bg-white z-50 transform rounded-r-xl shadow-2xl
+          className={`mt-28 fixed top-0 left-0 h-screen md:w-[40%] w-[80%] bg-white z-50 transform rounded-r-xl shadow-2xl
             ${isSideNav ? 'translate-x-0' : '-translate-x-full'}
             transition-transform duration-[600ms] ease-in-out p-2`}
         >
           <div className="w-full">
             <div className="flex justify-between p-6 text-xl font-medium">
-              <span className="uppercase s">Car Fits</span>
+              <span className="uppercase">Car Fits</span>
               <button
                 type="button"
                 onClick={handleSidenavPopup}
