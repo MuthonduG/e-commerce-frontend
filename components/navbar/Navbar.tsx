@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="fixed xl:w-[80%] w-[95%] rounded-full h-[5rem] shadow-xl bg-white mt-16 flex justify-center items-center p-2 gap-4">
+      <nav className="fixed top-0 left-1/2 -translate-x-1/2 xl:w-[80%] w-[95%] rounded-full h-[5rem] shadow-xl bg-white flex justify-center items-center p-2 gap-4 z-50 mt-4">
         <div className="flex xl:justify-around justify-between items-center xl:w-[80%] w-full gap-4">
           {/* Logo */}
           <div className="flex justify-center items-center overflow-hidden">

@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Anonymous",
-  description: "Report an issue anonymously",
+  title: "Car Fits",
+  description: "An web-based car dealership platform",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center items-center w-screen`}
       >
         <Navbar/>
-        <main className="">
+        <main className="pt-20">
           {children}
         </main>
         <Footer/>
