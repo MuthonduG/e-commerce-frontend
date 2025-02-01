@@ -5,6 +5,7 @@ import { ImFacebook } from "react-icons/im";
 import { GrInstagram } from "react-icons/gr";
 import { FaLinkedinIn } from "react-icons/fa";
 import { MdMarkEmailUnread } from "react-icons/md";
+import { BsWhatsapp } from "react-icons/bs";
 import Link from 'next/link';
 
 type socials = {
@@ -17,6 +18,7 @@ const headerSocials: socials[] = [
   { url: '', icon: <GrInstagram /> },
   { url: '', icon: <FaLinkedinIn /> },
   { url: '', icon: <MdMarkEmailUnread /> },
+  { url: '', icon: <BsWhatsapp /> },
 ]
 
 const Header = () => {
@@ -49,7 +51,7 @@ const Header = () => {
             </p>
           </div>
           <div className="text-lg flex justify-end">
-            <button type="button" className='bg-slate-200 text-slate-900 p-2 px-6 rounded-3xl hover:bg-neutral-400 hover:text-slate-200 mt-4'>Consult Us</button>
+            <button type="button" className='bg-slate-100 hover:font-semibold text-slate-900 p-2 px-6 rounded-3xl hover:bg-neutral-400 hover:text-slate-50 mt-4'>Consult Us</button>
           </div>
         </div>
 
